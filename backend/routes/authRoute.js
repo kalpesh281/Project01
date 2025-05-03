@@ -1,7 +1,8 @@
-const { googleLogin } = require("../controllers/authController");
+const { googleLogin, logout } = require("../controllers/authController");
 
 const router = require("express").Router();
 
-router.post("/google", googleLogin);
+router.get("/google", googleLogin);
+router.post("/logout", logout);
 
 module.exports = router;
