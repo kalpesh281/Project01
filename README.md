@@ -1,12 +1,126 @@
-# React + Vite
+# Google OAuth Authentication Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack application implementing Google OAuth2.0 authentication with React and Node.js.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Google OAuth2.0 Authentication
+- 🍪 Secure HTTP-only Cookie Session Management
+- 👤 User Profile Dashboard
+- 🚪 Secure Logout Functionality
+- 📱 Responsive Design with Tailwind CSS
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+
+- React with Vite
+- React Router DOM for navigation
+- Tailwind CSS for styling
+- Axios for API requests
+- @react-oauth/google for Google OAuth
+
+### Backend
+
+- Node.js & Express
+- MongoDB with Mongoose
+- JWT for authentication
+- Cookie-parser for session management
+
+## Setup Instructions
+
+1. Clone the repository
+2. Set up environment variables:
+
+### Frontend (.env)
+
+```
+VITE_GOOGLE_CLIENT_ID=your_google_client_id
+```
+
+### Backend (.env)
+
+```
+PORT=5003
+MONGO_URI=your_mongodb_uri
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+JWT_SECRET=your_jwt_secret
+```
+
+3. Install dependencies:
+
+```bash
+# Frontend
+cd frontend
+npm install
+
+# Backend
+cd backend
+npm install
+```
+
+4. Run the application:
+
+```bash
+# Frontend
+npm run dev
+
+# Backend
+npm run start
+```
+
+## Project Structure
+
+```
+project/
+├── frontend/
+│   ├── src/
+│   │   ├── Components/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   └── PageNotFound.jsx
+│   │   └── ...
+│   └── ...
+└── backend/
+    ├── config/
+    ├── controllers/
+    ├── routes/
+    ├── models/
+    └── ...
+```
+
+## Features Explanation
+
+1. **Authentication Flow**
+
+   - Users click "Login with Google"
+   - OAuth2.0 flow handles authorization
+   - Backend creates/updates user in MongoDB
+   - Session managed via HTTP-only cookies
+
+2. **Security Features**
+
+   - HTTP-only cookies for JWT
+   - Protected routes
+   - Secure logout mechanism
+   - Environment variable configuration
+
+3. **User Interface**
+   - Clean, modern design with Tailwind CSS
+   - Responsive layout
+   - User-friendly error handling
+   - Smooth transitions and animations
+
+## API Endpoints
+
+- `GET /api/auth/google` - Google OAuth login
+- `POST /api/auth/logout` - User logout
+
+## Contributing
+
+Feel free to submit issues and enhancement requests.
+
+## License
+
+MIT License
