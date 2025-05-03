@@ -1,13 +1,28 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./Components/Login";
+import Dashboard from "./Components/Dashboard";
+import PageNotFound from "./Components/PageNotFound";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
+  const GoogleAuthWrapper = () => {
+    return (
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+        <Login />
+      </GoogleOAuthProvider>
+    );
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello, your React + Tailwind setup is working! 🚀
-      </h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<GoogleAuthWrapper />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App
+export default App;
